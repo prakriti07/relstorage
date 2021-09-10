@@ -528,6 +528,9 @@ jobs:
           export CXXFLAGS="-pipe -Ofast -std=gnu++11" && \
           echo "Install native libs" && \
           yum -y install libmemcached-devel && \
+          echo "Install Build Dependencies" && \
+          pip install -U pip && \
+          pip install -U setuptools wheel twine && \
           deactivate'
 
   test_aarch64:
