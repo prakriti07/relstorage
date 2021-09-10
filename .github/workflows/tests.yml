@@ -527,11 +527,11 @@ jobs:
           echo "Install ccache, configure CFLAGS (ubuntu)" && \
           export CFLAGS="-pipe -Ofast -std=gnu++11" && \
           export CXXFLAGS="-pipe -Ofast -std=gnu++11" && \
-          echo "Install native libs"
-          yum install libmemcached-devel -y && \
+          echo "Install native libs" && \
+          yum -y install libmemcached-devel && \
           echo "Install Build Dependencies" && \
           pip install -U pip && \
-          pip install -U -q setuptools wheel twine && \
+          pip install -U setuptools wheel twine && \
           pip install -q -U 'cython>=3.0a6' && \
           pip install 'greenlet>=1.0a1;platform_python_implementation=="CPython"' && \
           echo "Build RelStorage" && \
