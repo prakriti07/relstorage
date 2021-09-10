@@ -524,6 +524,9 @@ jobs:
           bash -exc '${{ env.py }} -m venv .env && \
           source .env/bin/activate && \
           echo "Install ccache, configure CFLAGS (ubuntu)" && \
+          export CFLAGS="-pipe -Ofast -std=gnu++11" && \
+          export CXXFLAGS="-pipe -Ofast -std=gnu++11" && \
+          echo "Install native libs" && \
           deactivate'
 
   test_aarch64:
