@@ -524,24 +524,8 @@ jobs:
           bash -exc '${{ env.py }} -m venv .env && \
           source .env/bin/activate && \
           echo "Install ccache, configure CFLAGS (ubuntu)" && \
-          export CFLAGS="-pipe -Ofast -std=gnu++11" && \
-          export CXXFLAGS="-pipe -Ofast -std=gnu++11" && \
-          echo "Install native libs" && \
-          yum -y install libmemcached-devel && \
-          echo "Install Build Dependencies" && \
-          pip install -U pip && \
-          pip install -U setuptools wheel twine && \
-          pip install -q -U 'cython>=3.0a6' && \
-          pip install 'greenlet>=1.0a1;platform_python_implementation=="CPython"' && \
-          echo "Build RelStorage" && \
-          python setup.py build_ext -i && \
-          python setup.py bdist_wheel && \
-          pip install .[test] && \
-          echo "Check RelStorage build" && \
-          ls -l dist && \
-          twine check dist/* && \
           deactivate'
-        
+
   test_aarch64:
     needs: build-relstorage
     runs-on: ${{ matrix.os }}
