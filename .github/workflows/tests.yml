@@ -567,8 +567,9 @@ jobs:
           bash -exc '${{ env.py }} -m venv .env && \
           source .env/bin/activate && \
           echo "Install ccache, configure CFLAGS (ubuntu)" && \
-          #export CFLAGS="-Ofast -pipe -std=gnu++11" && \
-          #export CXXFLAGS="-Ofast -pipe -std=gnu++11" && \
+          export CFLAGS="-Ofast -pipe -std=gnu++11" && \
+          export CXXFLAGS="$CXXCFLAGS -std=gnu++11" && \
+          echo $CXXFLAGS && \
           echo "Install native libs" && \
           yum install libmemcached-devel -y && \
           echo "Build mysqlclient" && \
