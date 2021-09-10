@@ -527,6 +527,7 @@ jobs:
           export CFLAGS="-pipe -Ofast -std=gnu++11" && \
           export CXXFLAGS="-pipe -Ofast -std=gnu++11" && \
           echo "Install native libs" && \
+          yum -y install libmemcached-devel && \
           deactivate'
 
   test_aarch64:
