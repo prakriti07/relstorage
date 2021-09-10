@@ -532,7 +532,10 @@ jobs:
           pip install -U pip && \
           pip install -U setuptools wheel twine && \
           pip install -U 'cython>=3.0a6' && \
-          pip install 'greenlet>=1.0a1;platform_python_implementation=="CPython"' && \
+          #pip install 'greenlet>=1.0a1;platform_python_implementation=="CPython"' && \
+          echo "Build RelStorage" && \
+          python setup.py build_ext -i && \
+          python setup.py bdist_wheel && \
           deactivate'
 
   test_aarch64:
